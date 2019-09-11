@@ -1,0 +1,114 @@
+﻿@model IEnumerable<ObtenerPesoSAP.Models.CPUsuario>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/bootstrap.min.css">
+
+<link rel="stylesheet" href="~/Content/jquery.dataTables_themeroller.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/jquery.dataTables.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/demo_table_jui.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/demo_table.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/demo_page.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/jquery-ui-1.10.0.custom.min.css" data-semver="1.10.0" data-require="jqueryui" />
+<link rel="stylesheet" href="~/Content/jquery.dataTables.min.css" data-semver="1.10.13" data-require="jqueryui" />
+
+<script src="~/Scripts/jquery-1.12.4.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-latest.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-ui.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.dataTables.js" data-semver="1.9.4" data-require="datatables" type="text/javascript"></script>
+
+<br />
+<br />
+<br />
+<h2>Usuarios</h2>
+<h4>
+    @Html.ActionLink("Agregar Nuevo", "Create")
+</h4>
+
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        var table = $('#example').DataTable({
+
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Reglones",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Reglones",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+        }
+            );
+
+
+    });
+</script>
+
+<div class="form-horizontal container-fluid col-lg-push-8 img-rounded " style="background-color:#5c87b2">
+    <br />
+    <div class="panel panel-primary">
+        <div class="panel-body" style="background-color:#D6EAF8">
+            <table class="table display" style="background-color:#D6EAF8" id="example">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CPNombreUsuario)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CPCorreo)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CPNombreUsuario)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CPCorreo)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Pantallas", "Pantallas", new { id = item.CPIdUsuario }) |
+                                @Html.ActionLink("Modificar", "Edit", new { id = item.CPIdUsuario }) |
+                                @Html.ActionLink("Borrar", "Delete", new { id = item.CPIdUsuario })
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    table div {
+        background-color: #D6EAF8 !important;
+    }
+
+    table tr {
+        background-color: #D6EAF8 !important;
+    }
+
+    .sorting_1 {
+        background-color: #D6EAF8 !important;
+    }
+</style>

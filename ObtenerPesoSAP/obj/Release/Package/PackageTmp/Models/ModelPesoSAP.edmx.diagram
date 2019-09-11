@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f1ea55b78ddc442eb7052a9c6737e30a" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPAutorizaciones" Width="1.5" PointX="4.625" PointY="1.125" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPCatEmpresas" Width="1.5" PointX="12.375" PointY="0.5" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPCatMateriales" Width="1.5" PointX="2.875" PointY="9.25" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPCatTipoCaptura" Width="1.5" PointX="8.375" PointY="1.25" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPCatTiposDeVehiculos" Width="1.5" PointX="7.875" PointY="9.875" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPCatUnidades" Width="1.5" PointX="5.625" PointY="8.875" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPPantallas" Width="1.5" PointX="4.75" PointY="5.25" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPPantallasPermisos" Width="1.5" PointX="0.5" PointY="12.375" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPPartidas" Width="1.5" PointX="10.25" PointY="7.25" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPPermisosPlantas" Width="1.5" PointX="6.5" PointY="1.125" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPRol" Width="1.5" PointX="0.5" PointY="10.375" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPUsuario" Width="1.5" PointX="3" PointY="4.125" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPAutoriz__CPIdE__16CE6296" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPAutoriz__CPIdU__17C286CF" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPCatEmpr__CPIdT__1B9317B3" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPCatEmpr__CPUsu__1C873BEC" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPCatMate__CPIdE__12FDD1B2" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPPartida__CPIdE__09746778" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPPartida__CPIdE__72910220" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPPermiso__CPIdE__1D7B6025" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPCatMate__CPIdU__13F1F5EB" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPCatMate__CPUsu__14E61A24" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPCatMate__CPUsu__15DA3E5D" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPPermiso__CPIdT__1E6F845E" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPCatTipo__CPIdU__531856C7" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPPartida__CPIdU__0A688BB1" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPPartida__CPIdU__73852659" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPPartida__CPIdU__0B5CAFEA" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPPartida__CPIdU__74794A92" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPPermiso__CPIdU__1F63A897" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPUsuario__CPRol__5AB9788F" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPCatMensajesSAP" Width="1.5" PointX="0.5" PointY="6.75" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPCatProcesos" Width="1.5" PointX="10.25" PointY="4.75" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPLogDeProcesos" Width="1.5" PointX="8.375" PointY="3.875" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPLogDePr__CPIdE__7CD98669" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPCatMens__CPRol__02925FBF" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPCatMens__CPUsu__038683F8" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPCatMens__CPUsu__047AA831" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPLogDePr__CPIdP__7EC1CEDB" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPLogDePr__CPIdU__7DCDAAA2" />
+        <EntityTypeShape EntityType="BDObtenerPesoSAPModel.CPBitacora" Width="1.5" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPBitacor__CPIdE__68D28DBC" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPBitacor__CPIdU__69C6B1F5" />
+        <AssociationConnector Association="BDObtenerPesoSAPModel.FK__CPBitacor__CPIdU__6ABAD62E" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

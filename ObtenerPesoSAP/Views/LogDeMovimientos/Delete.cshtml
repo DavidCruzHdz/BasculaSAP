@@ -1,0 +1,128 @@
+﻿@model ObtenerPesoSAP.Models.CPLogDeProcesos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CPLogDeProcesos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CPIdTransporte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPIdTransporte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPIdDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPIdDocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPIdMaterial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPIdMaterial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPIdErrorSAP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPIdErrorSAP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPDescripcionMensaje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPDescripcionMensaje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPPartidas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPPartidas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPFechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPFechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CpFechaFinal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CpFechaFinal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPEstatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPEstatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPRol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPRol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPCatEmpresas.CPDescripcionEmpresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPCatEmpresas.CPDescripcionEmpresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPCatProcesos.CPDescripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPCatProcesos.CPDescripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPUsuario.CPNombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPUsuario.CPNombreUsuario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

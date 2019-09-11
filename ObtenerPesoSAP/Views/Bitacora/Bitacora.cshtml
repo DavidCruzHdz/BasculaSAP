@@ -1,0 +1,384 @@
+﻿@model PagedList.IPagedList<ObtenerPesoSAP.Models.CPBitacora>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Bitacora";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/jquery.dataTables_themeroller.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/jquery.dataTables.css" data-semver="1.9.4" data-require="datatables" />
+    <script src="~/Scripts/jquery.min.js" type="text/javascript"></script>
+
+
+    <link rel="stylesheet" href="~/Content/demo_table_jui.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/demo_table.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/demo_page.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap-theme.min.css" data-require="datatables" />
+
+    <link rel="stylesheet" href="~/Content/jquery-ui-1.10.0.custom.min.css" data-semver="1.10.0" data-require="jqueryui" />
+    <script src="~/Scripts/jquery-ui.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.dataTables.js" data-semver="1.9.4" data-require="datatables" type="text/javascript"></script>
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/Scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
+
+    <!-- Minified Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/daterangepicker.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" type="text/css" />
+
+    <!-- Minified JS library -->
+    <script src="~/Scripts/popper.min.js" type="text/javascript"></script>
+
+    <!-- Minified Bootstrap JS -->
+    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/moment.js" type="text/javascript"></script>
+    <script src="~/Scripts/daterangepicker.js" type="text/javascript"></script>
+
+</head>
+
+
+
+<br />
+<br />
+<h2>Bitacora de movimientos</h2>
+
+<div class="form-horizontal container-fluid col-lg-push-12 img-rounded " style="background-color:#5c87b2">
+    <br />
+
+    <div class="panel panel-primary" style="background-color:#D6EAF8">
+        <br />
+        @using (Html.BeginForm("Bitacora", "Bitacora", FormMethod.Get))
+            {
+            <div class="col-md-12">
+                <table>
+                    <tr>
+                        <td>
+                            <label style="text-align-last:left"> Fechas:</label>
+                        </td>
+                        <td style="width:5px;height:30px;text-align-last:left;"></td>
+                        <td>
+                            <div id="picker" style="background-color:#ffffff"; width:350px; height:30px; text-align-last:right;">
+
+                                <i class="fa fa-calender"></i> &nbsp;
+                                <span id="date"></span>
+                                &nbsp; <i class="fa fa-caret-down"></i>
+
+                            </div>
+                        </td>
+                        <td style="width:5px;height:30px;text-align-last:left;">
+
+                        </td>
+                        <td>
+                            <div style="width:280px;height:30px;text-align-last:left;">
+                                <input type="submit" value="Filtrar" />
+                            </div>
+                        </td>
+                        <td>
+                            <label style="background-color:#D6EAF8; text-align-last:left">Busqueda:</label>
+                        </td>
+                        <td style="width:5px;height:30px;text-align-last:left;"></td>
+                        <td>
+                            <div style="text-align-last:right; height:30px;">
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                            </div>
+                        </td>
+                        <td style="width:5px; height:30px; text-align-last:left;"></td>
+                        <td>
+                            <input type="submit" value="Empezar" />
+                        </td>
+                    </tr>
+                </table>
+            
+            </div>
+
+
+
+
+            <div class="col-md-12">
+                <input type="hidden" id="FeInicial" name="FeInicial" />
+                <input type="hidden" id="FeFinal" name="FeFinal" />
+
+                @*<label for="formGroupExampleInput" id="FechaIni"><span></span></label>
+                    <label for="formGroupExampleInput" id="FechaFin"><span></span></label>*@
+            </div>
+
+
+        }
+
+        <br />
+        <div class="panel-body" style="background-color:#D6EAF8">
+
+
+            <table class="table display" style="background-color:#D6EAF8" id="example">
+
+
+                <tr>
+                    <th>
+                        @Html.ActionLink("Transporte", "Index", new { sortOrder = "Transporte", currentFilter = ViewBag.CurrentFilter })
+                        @*@Html.DisplayNameFor(model => model.CPIdTransporte)*@
+                    </th>
+                    <th>
+                        @Html.ActionLink("Economico", "Index", new { sortOrder = "Economico", currentFilter = ViewBag.CurrentFilter })
+                        @*@Html.DisplayNameFor(model => model.CPNumEconomico)*@
+                    </th>
+                    <th>
+                        @Html.ActionLink("Placas", "Index", new { sortOrder = "Placas", currentFilter = ViewBag.CurrentFilter })
+                        @*@Html.DisplayNameFor(model => model.CPPlaca)*@
+                    </th>
+                    <th>
+                        @Html.ActionLink("Carta Porte", "Index", new { sortOrder = "Carta Porte", currentFilter = ViewBag.CurrentFilter })
+                        @*@Html.DisplayNameFor(model => model.CPNumPorte)*@
+                    </th>
+                    <th>
+                        @Html.ActionLink("Conductor", "Index", new { sortOrder = "Conductor", currentFilter = ViewBag.CurrentFilter })
+                        @*@Html.DisplayNameFor(model => model.CPNomConductor)*@
+                    </th>
+                    <th>
+                        @Html.ActionLink("Peso Tara", "Index", new { sortOrder = "Peso Tara", currentFilter = ViewBag.CurrentFilter })
+                        @*@Html.DisplayNameFor(model => model.CPPesoEntrada)*@
+                    </th>
+                    <th>
+                        @Html.ActionLink("Peso Bruto", "Index", new { sortOrder = "Peso Bruto", currentFilter = ViewBag.CurrentFilter })
+                        @*@Html.DisplayNameFor(model => model.CPPesoSalida)*@
+                    </th>
+                    <th>
+                        @Html.ActionLink("Peso Neto", "Index", new { sortOrder = "Peso Neto", currentFilter = ViewBag.CurrentFilter })
+                        @*@Html.DisplayNameFor(model => model.CPPesoNeto)*@
+                    </th>
+                    <th>
+                        @Html.ActionLink("Entrada", "Index", new { sortOrder = "Entrada", currentFilter = ViewBag.CurrentFilter })
+                        @*@Html.DisplayNameFor(model => model.CPFechaEntrada)*@
+                    </th>
+                    <th>
+                        @Html.ActionLink("Salida", "Index", new { sortOrder = "Salida", currentFilter = ViewBag.CurrentFilter })
+                        @*@Html.DisplayNameFor(model => model.CpFechaSalida)*@
+                    </th>
+                    <th></th>
+                </tr>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CPIdTransporte)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CPNumEconomico)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CPPlaca)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CPNumPorte)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CPNomConductor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CPPesoEntrada)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CPPesoSalida)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CPPesoNeto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CPFechaEntrada)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CpFechaSalida)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Consultar", "Details", new { id = item.CPId })
+                        </td>
+                    </tr>
+                }
+            </table>
+
+
+            <div class="col-lg-push-12" style="text-align-last:left">
+             <table>
+                 <tr>
+                     <td style="text-align-last:right; width:25px;">
+                       
+                     </td>
+                     <td style="text-align-last:left; width:200px;">
+                         Paginas @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                     </td>
+                     <td>
+                         @Html.PagedListPager(Model, page => Url.Action("Bitacora",
+                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                     </td>
+                 </tr>
+             </table>
+                   
+               
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        moment().locale('es');
+
+        //$('#date').html('Del '+ moment().subtract(29, 'days').format('MMMM DD, YY') + ' al ' + moment().format('MMMM DD, YY'))
+        //var fi = start.getDate() + "/" + start.getMonth() + "/" + start.getFullYear();
+        //var ff = end.getDate() + "/" + end.getMonth() + "/" + end.getFullYear();
+
+        //$("#FechaIni").val(fi);
+        //$("#FechaFin").val(ff);
+        //Busca();
+
+
+    });
+
+
+
+
+
+    //$('#picker').datetimepicker({
+    //    inline: true,
+    //    sideBySide: true,
+    //    stepping: 5,
+    //    locale: "de"
+    //});
+
+    $('#picker').daterangepicker({
+        startDate: moment().subtract(29, 'days'),
+        endDate: moment(),
+        ranges: {
+            'Hoy': [moment(), moment()],
+            'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Los ultimos 7 dias': [moment().subtract(6, 'days'), moment()],
+            'Los ultimos 30 dias': [moment().subtract(29, 'days'), moment()],
+            'Este Mes': [moment().startOf('month'), moment().endOf('month')],
+            'El mes pasado': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+    }, function(start, end){
+        $('#date').html('Del '+ start.format('DD MMMM YYYY') +' al '+ end.format('DD MMMM YYYY'))
+
+        var IdTransporte = $("#VarConsecutivo").val();
+        //var fi = start.getDate() + "/" + (start.getMonth() + 1) + "/" + start.getFullYear() + " " + start.getHours() + ":" + start.getMinutes() + ":" + start.getSeconds();
+        // var fi = start.getDate().val + "/" + start.getMonth().val + "/" + start.getFullYear().val;
+        //var ff = end.getDate().val + "/" + end.getMonth().val + "/" + end.getFullYear().val;
+        //var fi = start.getDate();
+        //+ "/" + start.getMonth() + "/" + start.getFullYear();
+        //var ff = end.getDate() + "/" + end.getMonth() + "/" + end.getFullYear();
+
+        // $("#FechaIni").val(fi.format('DD/MM/YYYY'));
+        // $("#FechaFin").val(ff.format('DD/MM/YYYY'));
+
+        $("#FechaIni").val(start.format('DD/MM/YYYY'));
+        $("#FechaFin").val(end.format('DD/MM/YYYY'));
+
+        //lerma
+        $("#FeInicial").val(start.format('DD/MM/YYYY'));
+        $("#FeFinal").val(end.format('DD/MM/YYYY'));
+        //alert(start.format('DD/MM/YYYY'));
+
+
+        //alert(start.format('DD/MM/YYYY'));
+        //alert(end.format('DD/MM/YYYY'));
+
+        //Busca();
+    });
+
+
+
+    function Busca()
+    {
+        var IdPlanta = @Session["idPlantaDF"];
+        var Captura = @Session["TipoCaptura"];
+
+
+        var DateInicial = $('#FechaIni').val();
+        var DateFinal = $('#FechaFin').val();
+        var Filter = $('#currentFilter').val();
+        var orden =  $("#sortOrder").val();
+        var QueBuscar =  $("#Search").val();
+
+
+
+        if (DateInicial != null)
+        {
+            QueBuscar = "";
+            Filter = null;
+            orden = "Entrada";
+            DateInicial = $('#start').val();
+            DateFinal = $('#end').val();
+            DateInicial = $('#FechaIni').val();
+            DateFinal = $('#FechaFin').val();
+
+
+        }
+        else
+        {
+            DateInicial = null;
+            DateFinal = null;
+            orden = "Transporte";
+            Filter = null;
+        }
+
+        var IdTransporte = $("#VarConsecutivo").val();
+
+        //var fecha = new Date();
+        //var dd = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + " " + fha.getHours() + ":" + fecha.getMinutes() + ":" + fecha.getSeconds();
+
+        //var id = 0;
+        //var IdAnio = "";
+
+
+        $.ajax({
+            //string sortOrder, string currentFilter, string searchString, int? page
+            url: location.origin + "/Bitacora/Bitacora?sortOrder=" + orden + "&currentFilter=" + Filter + "&FeInicial=" + DateInicial + "&FeFinal=" + DateFinal + "&searchString=" + QueBuscar,
+            success: function () {
+                $("#comment-" + IdPlanta).slideUp("fast");
+            }
+        });
+
+    }
+
+</script>
+
+
+@*<style>
+    table div {
+        background-color: #D6EAF8 !important;
+    }
+
+    table tr {
+        background-color: #D6EAF8 !important;
+    }
+
+    .sorting_1 {
+        background-color: #D6EAF8 !important;
+    }
+
+    #picker {
+        background: #fff;
+        cursor: pointer;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        width: 65%;
+    }
+</style>*@

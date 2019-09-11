@@ -1,0 +1,84 @@
+﻿@model ObtenerPesoSAP.Models.CPCatMensajesSAP
+
+@{
+    ViewBag.Title = "Borrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+}
+
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:#5c87b2;">
+
+    <h3>Estas seguro de borrar el registro?</h3>
+    <h4>Asegurece que este correctos los datos</h4>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CPDescripcionMsjSAP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPDescripcionMsjSAP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPTextoAnexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPTextoAnexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPFechaAlta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPFechaAlta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPFechaCambio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPFechaCambio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPRol.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPRol.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPUsuario.CPNombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPUsuario.CPNombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPUsuario1.CPNombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPUsuario1.CPNombreUsuario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-danger btn-lg" /> 
+            @Html.ActionLink("Regresar", "Index", "MensajesAnexos", null, new { @class = "btn btn-danger btn-lg", @style = "display:inline" })
+        </div>
+    }
+</div>

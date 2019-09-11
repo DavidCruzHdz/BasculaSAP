@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:p1="http://cydsa.com/PL/TM/TM101/Sender/WebServices/PesoVehiculo_BasculaComplemeto" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" name="SI_OS_BasculaComplemento" targetNamespace="http://cydsa.com/PL/TM/TM101/Sender/WebServices/PesoVehiculo_BasculaComplemeto" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation />
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="OP_SI_OS_BasculaComplemento" />
+  <wsdl:types>
+    <xsd:schema xmlns="http://cydsa.com/PL/TM/TM101/Sender/WebServices/PesoVehiculo_BasculaComplemeto" targetNamespace="http://cydsa.com/PL/TM/TM101/Sender/WebServices/PesoVehiculo_BasculaComplemeto" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="MT_Bascula_ComplementoRES" type="p1:DT_Bascula_ComplementoRES" />
+      <xsd:element name="MT_Bascula_ComplementoREQ" type="p1:DT_Bascula_ComplementoREQ" />
+      <xsd:complexType name="DT_Bascula_ComplementoREQ">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">063757c9bd4811e9afa20000001096ae</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="data">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">4e29aaacbd4b11e9a552025041000001</xsd:appinfo>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="Transporte" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">4e29aaabbd4b11e9ace7025041000001</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DT_Bascula_ComplementoRES">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">cc8de617b86511e9cdab0000001096ae</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="NOM_TRANSPORTISTA" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">1fbead6eb56211e9b73d025041000001</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="FECHA_PLAN" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">1fbead67b56211e99690025041000001</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="CLIENTES">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">1fbead6db56211e9cff3025041000001</xsd:appinfo>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="item">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">1fbead6cb56211e997a9025041000001</xsd:appinfo>
+                  </xsd:annotation>
+                  <xsd:complexType>
+                    <xsd:sequence>
+                      <xsd:element minOccurs="0" name="NUM_CLIENTE" type="xsd:string">
+                        <xsd:annotation>
+                          <xsd:appinfo source="http://sap.com/xi/TextID">1fbead68b56211e99711025041000001</xsd:appinfo>
+                        </xsd:annotation>
+                      </xsd:element>
+                      <xsd:element minOccurs="0" name="NOM_CLIENTE" type="xsd:string">
+                        <xsd:annotation>
+                          <xsd:appinfo source="http://sap.com/xi/TextID">1fbead69b56211e9ac5a025041000001</xsd:appinfo>
+                        </xsd:annotation>
+                      </xsd:element>
+                      <xsd:element minOccurs="0" name="POBLACION" type="xsd:string">
+                        <xsd:annotation>
+                          <xsd:appinfo source="http://sap.com/xi/TextID">1fbead6ab56211e9a357025041000001</xsd:appinfo>
+                        </xsd:annotation>
+                      </xsd:element>
+                      <xsd:element minOccurs="0" name="REGION" type="xsd:string">
+                        <xsd:annotation>
+                          <xsd:appinfo source="http://sap.com/xi/TextID">1fbead6bb56211e9b86d025041000001</xsd:appinfo>
+                        </xsd:annotation>
+                      </xsd:element>
+                    </xsd:sequence>
+                  </xsd:complexType>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RESULT" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">1fbed2a8b56211e98946025041000001</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="MT_Bascula_ComplementoREQ">
+    <wsdl:documentation />
+    <wsdl:part name="MT_Bascula_ComplementoREQ" element="p1:MT_Bascula_ComplementoREQ" />
+  </wsdl:message>
+  <wsdl:message name="MT_Bascula_ComplementoRES">
+    <wsdl:documentation />
+    <wsdl:part name="MT_Bascula_ComplementoRES" element="p1:MT_Bascula_ComplementoRES" />
+  </wsdl:message>
+  <wsdl:portType name="SI_OS_BasculaComplemento">
+    <wsdl:documentation />
+    <wsdl:operation name="SI_OS_BasculaComplemento">
+      <wsdl:documentation />
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_SI_OS_BasculaComplemento" />
+      </wsp:Policy>
+      <wsdl:input message="p1:MT_Bascula_ComplementoREQ" />
+      <wsdl:output message="p1:MT_Bascula_ComplementoRES" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SI_OS_BasculaComplementoBinding" type="p1:SI_OS_BasculaComplemento">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <wsdl:operation name="SI_OS_BasculaComplemento">
+      <operation soapAction="http://sap.com/xi/WebService/soap1.1" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <wsdl:input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </wsdl:input>
+      <wsdl:output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SI_OS_BasculaComplementoService">
+    <wsdl:port name="HTTP_Port" binding="p1:SI_OS_BasculaComplementoBinding">
+      <address location="http://mtyqas01.cydsa.com:50000/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=ZBS_LEGADOS_QAS&amp;receiverParty=&amp;receiverService=&amp;interface=SI_OS_BasculaComplemento&amp;interfaceNamespace=http%3A%2F%2Fcydsa.com%2FPL%2FTM%2FTM101%2FSender%2FWebServices%2FPesoVehiculo_BasculaComplemeto" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </wsdl:port>
+    <wsdl:port name="HTTPS_Port" binding="p1:SI_OS_BasculaComplementoBinding">
+      <address location="https://mtyqas01.cydsa.com:50001/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=ZBS_LEGADOS_QAS&amp;receiverParty=&amp;receiverService=&amp;interface=SI_OS_BasculaComplemento&amp;interfaceNamespace=http%3A%2F%2Fcydsa.com%2FPL%2FTM%2FTM101%2FSender%2FWebServices%2FPesoVehiculo_BasculaComplemeto" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+    <title>@ViewBag.Title - Captura de Pesos en Bascula</title>
+
+
+    <style>
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f9f9f9;
+        }
+
+        .header__logo {
+            background-color: red;
+            padding: 40px;
+        }
+
+        .header__menu ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            .header__menu ul li {
+                display: inline-block;
+            }
+
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .main__content {
+            width: 100%;
+            background-color: #ddd;
+            height: 500px;
+        }
+
+        .nav a {
+            color: #ffffff !important;
+        }
+
+        .nav dropdown-menu li a {
+            color: black !important;
+        }
+
+        .nav li :hover {
+            color: #808080 !important;
+            background-color: red;
+            background: #8ea8ba;
+            scrollbar-3dlight-color: cornflowerblue;
+            scrollbar-base-color: azure;
+        }
+
+        li .my-class {
+            color: black !important;
+        }
+
+        .jumbotron {
+            position: relative;
+            padding: 20px !important;
+            margin-top: 70px !important;
+            background: #eee;
+            margin-top: 23px;
+            text-align: left;
+            margin-bottom: 0 !important;
+        }
+
+            .jumbotron .container-fluid {
+                padding: 0 !important;
+            }
+    </style>
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+
+    <link rel="stylesheet" href="~/Content/jquery.dataTables_themeroller.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/jquery.dataTables.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/demo_table_jui.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/demo_table.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/demo_page.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/jquery-ui-1.10.0.custom.min.css" data-semver="1.10.0" data-require="jqueryui" />
+    <link rel="stylesheet" href="~/Content/jquery.dataTables.min.css" data-semver="1.10.13" data-require="jqueryui" />
+
+    <script src="~/Scripts/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-latest.js" type="text/javascript"></script>
+
+    <!-- Automatically provides/replaces `Promise` if missing or broken. -->
+    <script src="~/Scripts/es6-promise.js" type="text/javascript"></script>
+    <script src="~/Scripts/es6-promise.auto.js" type="text/javascript"></script>
+    <!-- Minified version of `es6-promise-auto` below. -->
+    <script src="~/Scripts/es6-promise.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/es6-promise.auto.min.js" type="text/javascript"></script>
+</head>
+
+
+<body id="marco" style="background-image:url('/Content/images/fondo.png'); background-size: cover; background-repeat: no-repeat; margin:0; border:0; padding:0;">
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top navbar-custom" style="background-image: url('/Content/images/encabezado.png'); width: 100%; height: 70Px;">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                    <img src="~/Content/images/logo.png" style="width:100px; height:50px;" alt="imgf" />
+                </div>
+                <div font="bold" class="navbar-collapse collapse" style="color:#ffffff; font:caption;">
+                    @Html.Partial("_LoginPartial")
+
+                    <ul class="nav navbar-nav">
+
+                        @if ((bool)Session["logeado"])
+                        {
+
+                            <li>@Html.ActionLink("Pesos Bascula", "Bascula", "Bascula")</li>
+                            <li>@Html.ActionLink("Modificaciones", "Index", "ListadoPesos")</li>
+
+                            <li>@Html.ActionLink("Bitacora", "Bitacora", "Bitacora")</li>
+
+
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <span class="glyphicon glyphicon-paste">
+                                    </span> Catalogos <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" style="background-color:#5c87b2; font:caption b !important" text="#black !important">
+                                    <li>@Html.ActionLink("Cambiar de Empresa", "CambiarPlanta", "CambiarPlanta")</li>
+                                    <li>@Html.ActionLink("Materiales", "Index", "Materiales")</li>
+                                    <li>@Html.ActionLink("Plantas", "Index", "Plantas")</li>
+                                    <li>@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>@Html.ActionLink("Mensajes", "Index", "MensajesAnexos")</li>
+                                    <li>@Html.ActionLink("Movimientos", "Index", "LogDeMovimientos")</li>
+                                </ul>
+                            </li>
+
+
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <p style="background-color:#5c87b2" text="#000000"></p>
+        <div class="container body-content info">
+
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year CYDSA. All Rights Reserved.</p>
+            </footer>
+        </div>
+
+
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+
+
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </div>
+    </header>
+
+
+</body>
+
+</html>
+
+
+
+<script language="javascript" type="text/javascript">
+    if (screen.width < 1024)
+    {
+        if (window.screen.width == 800) window.parent.document.body.style.width = "55%";
+    }
+    else
+    {
+        if (screen.width < 1280)
+        {
+            if (window.screen.width == 1152) window.parent.document.body.style.width = "82%";
+            if (window.screen.width == 1024) window.parent.document.body.style.width = "80%";
+        }
+        else
+        {
+            if (window.screen.width == 1920) window.parent.document.body.style.width = "98%"
+            if (window.screen.width == 1680) window.parent.document.body.style.width = "98%";
+            if (window.screen.width == 1440) window.parent.document.body.style.width = "92%";
+            if (window.screen.width == 1400) window.parent.document.body.style.width = "90%";
+            if (window.screen.width == 1366) window.parent.document.body.style.width = "88%";
+            if (window.screen.width == 1360) window.parent.document.body.style.width = "86%";
+            if (window.screen.width == 1280) window.parent.document.body.style.width = "84%";
+
+        }
+    }
+
+
+    // función que actualiza el zoom del elemento body
+    function actualizarTama()
+    {
+        if (window.screen.width == 1920)
+        {
+            $("body").css("zoom", "93%");
+        }
+
+        if (window.screen.width == 1680) {
+            $("body").css("zoom", "93%");
+        }
+
+        if (window.screen.width == 1440) {
+            $("body").css("zoom", "87%");
+        }
+
+        if (window.screen.width == 1400) {
+            $("body").css("zoom", "85%");
+        }
+
+        if (window.screen.width == 1366) {
+            $("body").css("zoom", "83%");
+        }
+
+        if (window.screen.width == 1360) {
+            $("body").css("zoom", "81%");
+        }
+
+        if (window.screen.width == 1280) {
+            $("body").css("zoom", "79%");
+        }
+
+        if (window.screen.width == 1152) {
+            $("body").css("zoom", "77%");
+        }
+
+        if (window.screen.width == 1024) {
+            alert('Resolucion 1024 Px')
+            $("body").css("zoom", "75%");
+        }
+
+        if (window.screen.width == 800)
+        {
+            alert('Resolucion 800 Px')
+            $("body").css("zoom", "50%");
+        }
+    }
+
+    $(document).ready(function () {
+
+        // actualizaremos el zoom cuando la ventana cambie de tamaño
+        $(window).on("resize", actualizarTama);
+
+        // y al cargar la página
+        actualizarTama();
+
+    });
+
+
+   
+    //setInterval(‘MantenSesion()’, <%= (int) (0.9 * (Session.Timeout * 60000)) %>);
+
+
+
+    //(function loop(){
+    //    setTimeout(function() {
+    //        // Your logic here
+
+    //        loop();
+    //    }, delay);
+    //})();
+
+
+</script>

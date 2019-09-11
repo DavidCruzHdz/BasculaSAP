@@ -1,0 +1,54 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+    <script src="~/Scripts/sweetalert2@8.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="~/Content/animate.css">
+</head>
+
+@{
+	ViewBag.Title = "Error";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">Error al procesar la solicitud.</h2>
+
+@if (SessionTimeOut.IsSessionTimedOut())
+   {
+
+   }
+
+
+<script type="text/javascript">
+   
+
+
+   $(function()
+   {
+       $("#FinSession").click(function ()
+       {
+            Swal.fire({
+           title: 'El Numero de ID de Transporte NO EXISTE EN SAP',
+                                text: "Presione el boton para cerrar!",
+                                type: "error",
+                                showConfirmButton: true,
+                                confirmButtonText: "Cerrar",
+                                animation: false,
+                                customClass:
+           {
+               popup: 'animated tada'
+                                }
+            }). then(function(result){
+                window.location.href = "Login";
+            })
+
+       });
+   });
+
+</script>
+
+
+ 
+
